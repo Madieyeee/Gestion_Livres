@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" 
+            fx:controller="sn.gestion.livres.controller.LivreController" 
+            prefHeight="600.0" prefWidth="900.0">
+    
+    <!-- Titre -->
+    <top>
+        <VBox style="-fx-background-color: #2196F3; -fx-padding: 15;">
+            <Label text="Gestion de Livres" style="-fx-font-size: 24px; -fx-text-fill: white; -fx-font-weight: bold;"/>
+        </VBox>
+    </top>
+    
+    <!-- Formulaire -->
+    <left>
+        <VBox spacing="15" style="-fx-padding: 20; -fx-background-color: #f5f5f5;">
+            <Label text="Formulaire Livre" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+            
+            <VBox spacing="5">
+                <Label text="Titre *"/>
+                <TextField fx:id="titreField" promptText="Titre du livre"/>
+            </VBox>
+            
+            <VBox spacing="5">
+                <Label text="Auteur *"/>
+                <TextField fx:id="auteurField" promptText="Nom de l'auteur"/>
+            </VBox>
+            
+            <VBox spacing="5">
+                <Label text="Année"/>
+                <TextField fx:id="anneeField" promptText="Ex: 2024"/>
+            </VBox>
+            
+            <VBox spacing="5">
+                <Label text="Prix"/>
+                <TextField fx:id="prixField" promptText="Ex: 15000"/>
+            </VBox>
+            
+            <VBox spacing="5">
+                <Label text="Type de Livre *"/>
+                <ComboBox fx:id="typeLivreCombo" prefWidth="250"/>
+            </VBox>
+            
+            <HBox spacing="10" style="-fx-padding: 10 0 0 0;">
+                <Button fx:id="ajouterBtn" text="Ajouter" onAction="#handleAjouter" 
+                        style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-weight: bold;" 
+                        prefWidth="110"/>
+                <Button fx:id="modifierBtn" text="Modifier" onAction="#handleModifier" 
+                        style="-fx-background-color: #FF9800; -fx-text-fill: white; -fx-font-weight: bold;" 
+                        prefWidth="110"/>
+            </HBox>
+            
+            <HBox spacing="10">
+                <Button fx:id="supprimerBtn" text="Supprimer" onAction="#handleSupprimer" 
+                        style="-fx-background-color: #f44336; -fx-text-fill: white; -fx-font-weight: bold;" 
+                        prefWidth="110"/>
+                <Button fx:id="viderBtn" text="Vider" onAction="#handleVider" 
+                        style="-fx-background-color: #9E9E9E; -fx-text-fill: white; -fx-font-weight: bold;" 
+                        prefWidth="110"/>
+            </HBox>
+        </VBox>
+    </left>
+    
+    <!-- Tableau -->
+    <center>
+        <VBox spacing="10" style="-fx-padding: 20;">
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <TextField fx:id="rechercheField" promptText="Rechercher..." prefWidth="300"/>
+                <Button text="Rechercher" onAction="#handleRechercher" 
+                        style="-fx-background-color: #2196F3; -fx-text-fill: white;"/>
+                <Button text="Tout afficher" onAction="#handleToutAfficher" 
+                        style="-fx-background-color: #607D8B; -fx-text-fill: white;"/>
+            </HBox>
+            
+            <TableView fx:id="livreTable" VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn fx:id="idCol" text="ID" prefWidth="50"/>
+                    <TableColumn fx:id="titreCol" text="Titre" prefWidth="200"/>
+                    <TableColumn fx:id="auteurCol" text="Auteur" prefWidth="150"/>
+                    <TableColumn fx:id="anneeCol" text="Année" prefWidth="80"/>
+                    <TableColumn fx:id="prixCol" text="Prix" prefWidth="100"/>
+                    <TableColumn fx:id="typeCol" text="Type" prefWidth="120"/>
+                </columns>
+            </TableView>
+        </VBox>
+    </center>
+</BorderPane>
